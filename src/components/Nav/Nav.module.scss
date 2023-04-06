@@ -1,0 +1,21 @@
+.list {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 16px;
+    color: black;
+}
+
+.active {
+    color: orange;
+}
