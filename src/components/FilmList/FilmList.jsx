@@ -1,11 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-const Home = ({ movies }) => {
+const FilmList = ({ SearchMovies }) => {
   // const location = useLocation();
   return (
     <>
-      <h2>PopularFilms</h2>
       <ul>
-        {movies.map(movie => (
+        {SearchMovies.map(movie => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
@@ -14,4 +13,4 @@ const Home = ({ movies }) => {
     </>
   );
 };
-export default Home;
+export default FilmList;
