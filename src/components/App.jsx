@@ -1,10 +1,18 @@
 import { Route, Routes, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Home from 'pages/HomePage';
-import Movies from 'pages/MoviesPage';
+import { useState, useEffect, Suspense, lazy } from 'react';
+// import Home from 'pages/HomePage';
+// import Movies from 'pages/MoviesPage';
 import Nav from './Nav/Nav';
 import { getMoviesList } from '../servises/FilmAPI';
-import MovieDetails from './MovieDetails/MovieDetails';
+// import MovieDetails from './MovieDetails/MovieDetails';
+// import Cast from './Cast/Cast';
+// import Reviews from './Reviews/Reviews';
+
+const Home = lazy(() => import('pages/HomePage'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Movies = lazy(() => import('pages/MoviesPage'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -36,13 +44,17 @@ export const App = () => {
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/" element={<Home movies={movies} />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-
-        <Route path="*" element={<Home movies={movies} />} />
-      </Routes>
+      <Suspense fallback={<h1>Loadding</h1>}>
+        <Routes>
+          <Route path="/" element={<Home movies={movies} />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home movies={movies} />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };

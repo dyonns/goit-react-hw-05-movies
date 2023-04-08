@@ -30,7 +30,6 @@ const Movies = () => {
   }, [query]);
   return (
     <>
-      {/* <p>{SearchMovies}</p> */}
       <SearchForm />
       <FilmList SearchMovies={SearchMovies} />
     </>

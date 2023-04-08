@@ -29,3 +29,17 @@ export const getMovieDetails = (movie_id) => {
         .get(`3/movie/${movie_id}`, { params: { api_key: API_KEY, language} })
         .then((res) => res.data);
 };
+
+// get-movie-credits
+
+export const getMovieCredits = (movie_id) => {
+    return axios
+        .get(`3/movie/${movie_id}/credits`, { params: { api_key: API_KEY, language} })
+        .then((res) => res.data);
+};
+
+export const getMovieReviews  = (movie_id) => {
+    return axios
+        .get(`3/movie/${movie_id}/reviews`, { params: { api_key: API_KEY, language} })
+        .then((res) => res.data);
+};
