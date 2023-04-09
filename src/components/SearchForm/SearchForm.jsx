@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import s from './SearchForm.module.css';
-import PropTypes from 'prop-types';
 
 const SearchForm = () => {
   const [input, setInput] = useState('');

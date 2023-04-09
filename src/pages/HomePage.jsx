@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 const Home = ({ movies }) => {
   return (
     <>
@@ -12,5 +14,9 @@ const Home = ({ movies }) => {
       </ul>
     </>
   );
+};
+
+Home.propTypes = {
+  movie: PropTypes.array,
 };
 export default Home;
