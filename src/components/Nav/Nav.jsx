@@ -5,6 +5,7 @@ import s from './Nav.module.scss';
 const Nav = () => {
   const getACtiveClass = ({ isActive }) => clsx(s.link, isActive && s.active);
   const Location = useLocation();
+
   return (
     <nav>
       <ul className={s.list}>

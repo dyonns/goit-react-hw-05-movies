@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const SearchForm = () => {
   const [input, setInput] = useState('');
   const [search, setSearch] = useSearchParams();
-  console.log(search.get('query'));
+  // console.log(search.get('query'));
 
   const handleSubmit = e => {
     e.preventDefault();
