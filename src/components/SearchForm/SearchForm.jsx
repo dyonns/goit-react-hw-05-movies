@@ -6,7 +6,7 @@ import s from './SearchForm.module.css';
 const SearchForm = () => {
   const [input, setInput] = useState('');
   const [search, setSearch] = useSearchParams();
-
+  console.log(search);
   const handleSubmit = e => {
     e.preventDefault();
     setSearch({ query: input });
