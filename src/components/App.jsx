@@ -1,12 +1,7 @@
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect, Suspense, lazy } from 'react';
-// import Home from 'pages/HomePage';
-// import Movies from 'pages/MoviesPage';
 import Nav from './Nav/Nav';
 import { getMoviesList } from '../servises/FilmAPI';
-// import MovieDetails from './MovieDetails/MovieDetails';
-// import Cast from './Cast/Cast';
-// import Reviews from './Reviews/Reviews';
 
 const Home = lazy(() => import('pages/HomePage'));
 const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
@@ -16,10 +11,8 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setError(null);
     const fetchMovies = async () => {
       try {
         const data = await getMoviesList();
@@ -34,7 +27,7 @@ export const App = () => {
           .slice(0, 20);
         setMovies(movieTitles);
       } catch (error) {
-        setError(error.message);
+        Error('No Movies data');
       }
     };
 

@@ -1,6 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Home = ({ movies }) => {
-  // const location = useLocation();
   return (
     <>
       <h2>PopularFilms</h2>

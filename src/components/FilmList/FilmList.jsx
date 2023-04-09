@@ -1,18 +1,23 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-const FilmList = ({ SearchMovies, state }) => {
+const FilmList = ({ SearchMovies }) => {
   const location = useLocation();
   return (
     <>
-      <ul>
-        {SearchMovies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={state}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {SearchMovies.length <= 0 ? (
+        <p>We don't have any reviews for this movie.</p>
+      ) : (
+        <ul>
+          {SearchMovies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };

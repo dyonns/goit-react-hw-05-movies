@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 const SearchForm = () => {
   const [input, setInput] = useState('');
   const [search, setSearch] = useSearchParams();
-  // console.log(search.get('query'));
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -24,15 +23,11 @@ const SearchForm = () => {
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="Search images and photos"
+        placeholder="Enter the name of the movie"
         onChange={e => setInput(e.target.value)}
       />
     </form>
   );
-};
-
-SearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

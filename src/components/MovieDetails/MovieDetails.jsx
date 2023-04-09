@@ -1,36 +1,15 @@
-import {
-  useParams,
-  useLocation,
-  useNavigate,
-  Link,
-  Outlet,
-} from 'react-router-dom';
+import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { getMovieDetails } from '../../servises/FilmAPI';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const MovieDetails = () => {
   const [details, setDetails] = useState('');
   const [genres, setGenres] = useState([]);
 
   const { movieId } = useParams();
-
-  // ??????????????????????????????????????????????????????????
-
-  const navigate = useNavigate();
   const location = useLocation();
-  // console.log('windo', window.location);
-  console.log('Locat', location.state?.from);
-
-  // const test = window.location.pathname.includes('movies') ? '/movies' : '/';
 
   const cameBack = location.state?.from ?? '/';
-  console.log('location.state?.from', location.state);
-  // const prevPageLocation = location.state;
-  // const handleGoBack = () => {
-  //   navigate({ state: { prevPageLocation: location } });
-  // };
-
-  // const backLinkLocationRef = useRef(location.state?.from || '/');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -43,7 +22,6 @@ const MovieDetails = () => {
 
   return (
     <div>
-      {/* <button onClick={handleGoBack}>GoBack</button> */}
       <Link to={cameBack}>Go Back</Link>
 
       <div>
